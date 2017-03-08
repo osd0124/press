@@ -10,6 +10,7 @@
 	<a href="${pageContext.request.contextPath }/member/memberJoin.do">회원가입</a>
 	<a href="${pageContext.request.contextPath }/login/login.do">로그인</a>
 	<a href="${pageContext.request.contextPath}/board/openBoardList.do">게시판</a>
+	<a href="${pageContext.request.contextPath}/i_board/openBoardList.do">게시판</a>
 	
 	<c:if test="${not empty userVO }">
 	<a href="${pageContext.request.contextPath }/member/${userVO.id}/Mypage.do">마이페이지</a>
