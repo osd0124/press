@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>게시판 목록</h2>
-	<table class="i_board_list">
+	<table class="board_list">
 		<colgroup>
 			<col width="10%"/>
 			<col width="*"/>
@@ -64,13 +64,13 @@
 		
 		function fn_openBoardWrite(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/i_board/openBoardWrite.do' />");
+			comSubmit.setUrl("<c:url value='/board/openBoardWrite.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_selectBoardList(pageNo){
             var comAjax = new ComAjax();
-            comAjax.setUrl("<c:url value='/i_board/selectBoardList.do' />");
+            comAjax.setUrl("<c:url value='/board/selectBoardList.do' />");
             comAjax.setCallback("fn_selectBoardListCallback");
             comAjax.addParam("KEYTAG",$("#KEYTAG").val());
             comAjax.addParam("KEYWORD",$("#KEYWORD").val());
@@ -103,7 +103,7 @@
                     str += "<tr>" +
                                 "<td>" + value.RNUM + "</td>" +
                                 "<td class='title'>" +
-                                    "<a href='<c:url value='/i_board/openBoardDetail.do?IDX=" + value.IDX + "' />' name='title'>" + value.TITLE + "</a>" +
+                                    "<a href='<c:url value='/board/openBoardDetail.do?IDX=" + value.IDX + "' />' name='title'>" + value.TITLE + "</a>" +
                                 "</td>" +
                                 "<td>" + value.HIT_CNT + "</td>" +
                                 "<td>" + value.CREA_DTM + "</td>" +

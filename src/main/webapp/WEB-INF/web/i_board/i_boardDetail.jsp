@@ -44,6 +44,10 @@
 							<a href="#this" name="file">${row.ORIGINAL_FILE_NAME }</a> 
 							(${row.FILE_SIZE }kb)
 						</p>
+						
+						
+						
+						
 					</c:forEach>
 				</td>
 			</tr>
@@ -82,14 +86,14 @@
 		
 		function fn_openBoardList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/i_board/openBoardList.do' />");
+			comSubmit.setUrl("<c:url value='/board/openBoardList.do' />");
 			comSubmit.submit();
 		}
 
 		function fn_openBoardReply(){
 			var idx = "${map.IDX}";
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/i_board/openBoardReply.do' />");
+			comSubmit.setUrl("<c:url value='/board/openBoardReply.do' />");
 			comSubmit.addParam("IDX", idx);
 			comSubmit.submit();
 		}
@@ -97,7 +101,7 @@
 		function fn_openBoardUpdate(){
 			var idx = "${map.IDX}";
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/i_board/openBoardUpdate.do' />");
+			comSubmit.setUrl("<c:url value='/board/openBoardUpdate.do' />");
 			comSubmit.addParam("IDX", idx);
 			comSubmit.submit();
 		}

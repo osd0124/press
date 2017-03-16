@@ -89,19 +89,19 @@
 		
 		function fn_openBoardList(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/i_board/openBoardList.do' />");
+			comSubmit.setUrl("<c:url value='/board/openBoardList.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_insertBoard(){
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/i_board/replyinsertBoard.do' />");
+			comSubmit.setUrl("<c:url value='/board/replyinsertBoard.do' />");
 			comSubmit.submit();
 		}
 		
 		function fn_deleteBoard(){
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/i_board/deleteBoard.do' />");
+			comSubmit.setUrl("<c:url value='/board/deleteBoard.do' />");
 			comSubmit.addParam("IDX", $("#IDX").val());
 			comSubmit.submit();
 			

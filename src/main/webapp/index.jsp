@@ -17,5 +17,6 @@
 	<a href="${pageContext.request.contextPath }/login/logout.do">로그아웃</a>
 	</c:if>
 	
+							
 </body>
 </html>                           
