@@ -5,10 +5,11 @@
 <html>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/ckeditor/ckeditor.js"></script>
 <head>
 </head>
 <body>
-	<form id="frm" name="frm" enctype="multipart/form-data">
+<form id="frm" name="frm" enctype="multipart/form-data">
 		<table class="board_view">
 			<colgroup>
 				<col width="15%">
@@ -23,6 +24,9 @@
 				<tr>
 					<td colspan="2" class="view_text">
 						<textarea rows="20" cols="100" title="내용" id="CONTENTS" name="CONTENTS"></textarea>
+						<script type="text/javascript">
+                		CKEDITOR.replace( 'CONTENTS' );
+            			</script>
 					</td>
 				</tr>
 			</tbody>

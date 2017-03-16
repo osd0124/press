@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/ckeditor/ckeditor.js"></script>
 <head>
 </head>
 <body>
@@ -41,6 +42,9 @@
 				<tr>
 					<td colspan="4" class="view_text">
 						<textarea rows="20" cols="100" title="내용" id="CONTENTS" name="CONTENTS">${map.CONTENTS }</textarea>
+						<script type="text/javascript">
+                		CKEDITOR.replace( 'CONTENTS' );
+            			</script>
 					</td>
 				</tr>
 				<tr>

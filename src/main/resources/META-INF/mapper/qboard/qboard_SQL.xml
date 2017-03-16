@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qboard">
+	
+	<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
+	<include refid="common.pagingPre" />
+		select ROWNUM RNUM,
+				IDX,
+				TITLE,
+				CONTENTS,
+				HIT_CNT,
+				DEL_GB,
+				to_char(CREA_DTM,'yy-mm-dd') CREA_DTM,
+				CREA_ID,
+				REF_NUM,
+				INDENT_NUM,
+				STEP
+		FROM (SELECT * FROM Q_BOARD
+		<if test='KEYTAG == "TITLE" or KEYTAG == "CREA_ID" or KEYTAG =="CONTENTS"'>
+		<![CDATA[
+			where ${KEYTAG} LIKE '%${KEYWORD}%'
+		]]>
+		</if>
+		<if test='KEYTAG == "ALL"'>
+		<![CDATA[
+			where TITLE LIKE '%${KEYWORD}%'
+			or CREA_ID LIKE '%${KEYWORD}%'
+			or CONTENTS LIKE '%${KEYWORD}%'
+		]]>
+		</if>
+		order by REF_NUM DESC,INDENT_NUM)
+	<include refid="common.pagingPost" />	
+	</select>
+	
+	<insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+		<selectKey keyProperty="IDX" resultType="String" order="BEFORE">
+			select seq_q_board_idx.nextval from dual
+		</selectKey>
+		insert into q_board(
+			IDX,
+			TITLE,
+			CONTENTS,
+			<if test="IDX_P == null">
+				REF_NUM,
+			</if>
+			<if test="IDX_P !=null" >
+				INDENT_NUM,
+				STEP,
+				REF_NUM,
+			</if>
+			CREA_ID
+		)
+		values(
+			#{IDX},#{TITLE},#{CONTENTS},
+			<if test="IDX_P == null">
+				#{IDX},
+			</if>
+			<if test="IDX_P != null">
+				#{INDENT_NUM}+1,
+				#{STEP}+1,
+				#{IDX_P},
+			</if>
+			'Admin'
+		)
+	</insert>
+	
+	<select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
+		select IDX,TITLE,CONTENTS,CREA_ID,HIT_CNT,REF_NUM,INDENT_NUM,STEP
+		from q_board where IDX = #{IDX}
+	</select>
+	
+	<update id="updateHitCnt" parameterType="hashmap">
+		update q_board set HIT_CNT=HIT_CNT+1 where IDX=#{IDX}
+	
+	</update>
+	
+	<update id="updateBoard" parameterType="hashmap">
+			UPDATE T_BOARD 
+			SET
+				TITLE = #{TITLE},
+				CONTENTS = #{CONTENTS}
+			WHERE
+				IDX = #{IDX}	
+	</update>
+</mapper>

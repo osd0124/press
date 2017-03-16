@@ -101,7 +101,7 @@
                 var str = "";
                 $.each(data.list, function(key, value){
                     str += "<tr>" +
-                                "<td>" + value.RNUM + "</td>" +
+                                "<td>" + value.IDX + "</td>" +
                                 "<td class='title'>" +
                                     "<a href='<c:url value='/board/openBoardDetail.do?IDX=" + value.IDX + "' />' name='title'>" + value.TITLE + "</a>" +
                                 "</td>" +

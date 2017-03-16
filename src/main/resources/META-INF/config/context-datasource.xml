@@ -6,14 +6,21 @@
                         http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
  
-	<!-- 오라클 bean의 기본 설정 -->
+	<!-- 오라클 bean의 기본 설정 
     <bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@DESKTOP-DOGVD1T:1521:orcl "/>
+        <property name="url" value="jdbc:oracle:thin:@DESKTOP-DOGVD1T:1521:orcl"/>
         <property name="username" value="c##pressfit"/>
         <property name="password" value="pressfit"/>
     </bean>
-    
+    -->
+    <!--mysql bean 설정    -->
+ 	<bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://centosdbserver.cnqiy75vsfyr.ap-northeast-2.rds.amazonaws.com/pressfit"/>
+        <property name="username" value="pressfit"/>
+        <property name="password" value="pressfit"/>
+    </bean> 
     
     
     <!-- 현 프로젝트에서는 db에들어가는 기본 bean이 proxy통신을 할 때 마다  잡아서 기록하도 록 해두었습니다. -->

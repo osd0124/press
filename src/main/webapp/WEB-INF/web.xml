@@ -10,7 +10,9 @@
 	<!-- context 관련 xml 파일들의 아래의 위치 및 조건을 가진 파일들어서 읽어온다. -->
 	<context-param>
 	    <param-name>contextConfigLocation</param-name>
-	    <param-value>classpath:/META-INF/config/*.xml</param-value>
+	    <param-value>
+	    	classpath:/META-INF/config/*.xml	
+	    </param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -55,4 +57,14 @@
 	    <servlet-name>action</servlet-name>
 	    <url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	
+	<!--Security -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
