@@ -24,14 +24,14 @@ Logger log = Logger.getLogger(this.getClass());
 	@RequestMapping(value="/board/openBoardList.do")
     public ModelAndView openBoardList(CommandMap commandMap) throws Exception{
     	ModelAndView mv = new ModelAndView("/board/boardList");
-  //  	System.out.println(commandMap.getMap());
+    	System.out.println(commandMap.getMap());
     	return mv;
     }
 	 
 	@RequestMapping(value="/board/selectBoardList.do")
 	public ModelAndView selectBoardList(CommandMap commandMap) throws Exception{
 	    ModelAndView mv = new ModelAndView("jsonView");
-	//    System.out.println(commandMap.getMap());
+	    System.out.println(commandMap.getMap());
 	    List<Map<String,Object>> list = boardService.selectBoardList(commandMap.getMap());
 	    mv.addObject("list", list);
 	    if(list.size() > 0){
